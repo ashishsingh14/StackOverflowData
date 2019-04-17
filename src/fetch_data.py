@@ -13,7 +13,7 @@ logging.basicConfig(stream=sys.stderr, level=logging.INFO)
 LOG = logging.getLogger()
 SITE_TYPE = "stackoverflow"
 PAGE_SIZE = 100
-MAX_PAGES = 5
+MAX_PAGES = 1
 TOP_N = 10
 N_DAYS = 7
 
@@ -44,7 +44,7 @@ def get_most_recent_questions():
     except Exception as e:
         LOG.error("Error fetching the latest questions from : {} {}".format(tagged, str(e)))
         return jsonify({"output": []})
-    LOG.info("The final response to be returned is: {}".format(jsonify(final_response)))
+    LOG.info("The final response to be returned is: {}".format(str(final_response)))
     #return render_template('<html><h1>HI</hi></html>')
     return render_template("index.html", result=final_response)
 
@@ -73,7 +73,7 @@ def get_most_scored_questions():
     except Exception as e:
         LOG.error("Error fetching the latest questions from : {} {}".format(tagged, str(e)))
         return jsonify({"output": []})
-    LOG.info("The final response to be returned is: {}".format(jsonify(final_response)))
+    LOG.info("The final response to be returned is: {}".format(str(final_response)))
     #return render_template('<html><h1>HI</hi></html>')
     return render_template("index.html", result=final_response)  #jsonify(final_response)
 
